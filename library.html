@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kurssikaveri</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="shared/theme.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-in">
+      <a class="topbar-logo" href="#home"><img src="icons/kurssikaveri-vaaka-valkoinen.svg" alt="Kurssikaveri – Tänään"></a>
+      <nav class="navtabs" aria-label="Päävalikko">
+        <button class="navtab" data-view="home">Tänään <span class="badge" id="attention-count"></span></button>
+        <button class="navtab" data-view="calendar">Kalenteri</button>
+        <button class="navtab" data-view="courses">Kurssit</button>
+        <button class="navtab" data-view="settings">Asetukset</button>
+        <button class="theme-toggle" id="theme-toggle" type="button"></button>
+      </nav>
+    </div>
+  </header>
+  <main id="main"></main>
+  <!-- Tallennetun tekstin ikkuna on <main>-elementin ulkopuolella: sivun uudelleenpiirto ei sulje sitä kesken lukemisen.
+       Sisältö täytetään views/courseView.js:ssä (textContent, ei HTML:ää). -->
+  <dialog class="text-dialog" id="text-view" aria-labelledby="text-view-title">
+    <h2 id="text-view-title"></h2>
+    <p class="muted small" id="text-view-meta"></p>
+    <p class="small" id="text-view-note"></p>
+    <p class="notice error" id="text-view-error" role="alert"></p>
+    <div class="text-view-body" id="text-view-body" tabindex="0" aria-label="Tallennettu teksti"></div>
+    <form method="dialog" class="actions"><button class="btn primary">Sulje</button></form>
+  </dialog>
+  <!-- Huom: lisäosan sivuilla ei saa käyttää onclick-attribuutteja (Chromen turvallisuussääntö).
+       Tapahtumat liitetään JavaScriptissä, ks. views/*.js -->
+  <script type="module" src="library.js"></script>
+</body>
+</html>

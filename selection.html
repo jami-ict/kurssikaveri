@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="fi" class="selection-document">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tallenna valittu teksti – Kurssikaveri</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="popup.css">
+  <link rel="stylesheet" href="selection.css">
+  <script type="module" src="shared/theme.js"></script>
+</head>
+<body class="popup selection-window">
+  <main id="content" aria-label="Valitun tekstin tallennus"><p class="muted">Luetaan tekstivalintaa…</p></main>
+  <dialog class="sel-dialog" id="sel-preview" aria-labelledby="sel-preview-title">
+    <h2 id="sel-preview-title">Valitun tekstin esikatselu</h2>
+    <p class="muted small" id="sel-preview-meta"></p>
+    <div id="sel-preview-body" tabindex="0" aria-label="Tekstin sisältö"></div>
+    <form method="dialog"><button class="btn primary">Sulje esikatselu</button></form>
+  </dialog>
+  <script type="module" src="selection.js"></script>
+</body>
+</html>

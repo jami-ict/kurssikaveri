@@ -1,0 +1,65 @@
+/* Popupin tiivis kansioilme. Kaikki värit tulevat yhteisistä teemamuuttujista. */
+/* Lisäosapopupin koko määräytyy sisällöstä. 100vw-raja sitoisi leveyden
+   selaimen aluksi avaamaan kapeaan ikkunaan ja estäisi kasvamisen 400 px:iin. */
+html.popup-document { width:400px; min-width:400px; }
+body.popup { width:400px; min-width:400px; max-height:600px; display:flex; flex-direction:column; overflow:hidden; }
+.popup .popup-header { padding:8px 12px; flex-shrink:0; gap:8px; min-height:52px; }
+.popup .popup-header > button { min-height:36px; padding:4px; font-size:13px; text-align:right; }
+.popup #content { width:100%; max-width:none; margin:0; padding:12px; min-height:0; max-height:548px; overflow-y:auto; overflow-x:hidden; overscroll-behavior:contain; scrollbar-width:thin; }
+.popup .pp-folder { --pp-face:var(--bg); --pp-tab:var(--accent-soft); margin:0 0 12px; }
+.popup .pp-folder:last-child { margin-bottom:0; }
+.popup .pp-tab { position:relative; width:max-content; max-width:calc(100% - 12px); min-height:28px; margin:0; padding:4px 11px; border-radius:9px 11px 0 0; background:var(--pp-tab); color:var(--accent-ink); font-size:14px; line-height:1.4; overflow-wrap:anywhere; }
+.popup .pp-tab::after { content:""; position:absolute; left:100%; bottom:0; width:10px; height:10px; background:inherit; -webkit-mask:radial-gradient(circle at 100% 0,transparent 9.5px,#000 10px); mask:radial-gradient(circle at 100% 0,transparent 9.5px,#000 10px); }
+.popup .pp-face { padding:9px 10px; background:var(--pp-face); border:1px solid var(--border); border-top:3px solid var(--pp-tab); border-radius:0 10px 10px 10px; }
+.popup .pp-next { --pp-face:var(--accent-soft); --pp-tab:color-mix(in srgb,var(--accent-soft) 82%,var(--accent)); }
+.popup .pp-saved { --pp-face:var(--ok-soft); --pp-tab:color-mix(in srgb,var(--ok-soft) 82%,var(--ok)); }
+.popup .pp-saved .pp-tab { color:var(--text); }
+.popup .pp-face > p { margin:0 0 7px; overflow-wrap:anywhere; }
+.popup .pp-face > p:last-child { margin-bottom:0; }
+.popup .pp-sync { display:flex; align-items:center; justify-content:space-between; gap:8px; font-size:13px; color:var(--muted); margin-bottom:7px; }
+.popup .pp-sync span { min-width:0; }
+.popup .pp-sync button { flex-shrink:0; min-height:30px; padding:3px; font-size:13px; }
+.popup .pp-nearest { border-left:3px solid var(--course-dot,var(--accent)); padding-left:8px; }
+.popup .pp-relative { margin:0; font-size:20px; line-height:1.25; font-weight:750; color:var(--accent-ink); }
+.popup .pp-relative.late { color:var(--danger); }
+.popup .pp-date { display:block; margin:2px 0 5px; font-size:13px; color:var(--muted); }
+.popup .pp-event-title { display:block; color:var(--text); font-size:16px; line-height:1.35; font-weight:650; text-decoration:underline; text-underline-offset:3px; overflow-wrap:anywhere; }
+.popup .pp-course { display:block; margin:3px 0 0; color:var(--muted); font-size:13px; overflow-wrap:anywhere; }
+.popup .pp-own { display:inline-block; padding:1px 5px; margin-left:5px; color:var(--own-ink); background:var(--own); font-size:12px; border-radius:4px; }
+.popup .pp-deadline { display:block; padding:6px 0; border-bottom:1px solid var(--border); color:var(--text); text-decoration:none; overflow-wrap:anywhere; }
+.popup .pp-deadline strong { display:block; font-size:14px; text-decoration:underline; text-underline-offset:3px; }
+.popup .pp-deadline .pp-date { margin:0 0 2px; }
+.popup .pp-material { display:block; padding:8px 0; color:var(--text); font-weight:550; border-bottom:1px solid var(--border); text-underline-offset:3px; overflow-wrap:anywhere; }
+.popup .pp-material:last-child { border-bottom:0; }
+.popup .pp-link { display:inline-block; min-height:32px; padding:6px 0; color:var(--accent); font-size:14px; text-underline-offset:3px; }
+.popup .pp-page-title { font-size:14px; line-height:1.4; overflow-wrap:anywhere; }
+.popup .pp-source { margin-top:-3px !important; color:var(--muted); font-size:12px; }
+.popup .pp-save-row { display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:end; gap:8px; }
+.popup .pp-save-row label { min-width:0; color:var(--text); font-size:14px; }
+.popup .pp-save-row select { width:100%; min-width:0; min-height:40px; padding:7px 25px 7px 8px; appearance:none; background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%); background-position:calc(100% - 15px) 17px,calc(100% - 10px) 17px; background-size:5px 5px; background-repeat:no-repeat; }
+.popup .pp-save-row .btn { max-width:145px; min-height:40px; font-size:14px; }
+.popup .pp-save-wide { width:100%; min-height:40px; }
+.popup .pp-selected-course { margin:4px 0 0; font-size:12px; color:var(--muted); overflow-wrap:anywhere; }
+.popup .pp-selected-course:empty { display:none; }
+.popup .pp-options { display:flex; flex-wrap:wrap; gap:0 12px; margin-top:3px; }
+.popup .pp-options details { flex:1 1 auto; min-width:0; }
+.popup .pp-options details[open] { flex-basis:100%; }
+.popup .pp-options summary { min-height:32px; margin:0; padding:6px 0; color:var(--accent); font-size:14px; }
+.popup .pp-options label { color:var(--text); font-size:14px; margin-bottom:8px; }
+.popup .pp-options input[type=text],.popup .pp-options textarea { width:100%; min-height:36px; font:inherit; color:var(--text); background:var(--field); border:1px solid var(--border); border-radius:6px; padding:7px 8px; }
+.popup .pp-options textarea { resize:vertical; min-height:65px; }
+.popup .pp-options .btn { margin-bottom:8px; }
+.popup .pp-check { display:flex; flex-direction:row; align-items:flex-start; gap:8px; margin:8px 0; }
+.popup .pp-check input { flex:none; width:18px; height:18px; margin:1px 0 0; accent-color:var(--accent); }
+.popup .pp-check small { display:block; font-size:12px; color:var(--muted); }
+.popup .pp-notice { margin:8px 0; padding:8px; border-radius:7px; background:var(--accent-soft); color:var(--text); font-size:13px; overflow-wrap:anywhere; }
+.popup .pp-notice p { margin:3px 0; }
+.popup .pp-notice strong { display:block; }
+.popup .pp-notice.error { background:var(--danger-soft); color:var(--danger); }
+.popup .pp-notice.ok { background:var(--ok-soft); color:var(--text); }
+.popup .pp-notice .btn { margin-top:5px; }
+.popup .pp-notice .pp-link { color:inherit; }
+.popup .pp-success { color:var(--text); font-weight:650; }
+.popup .pp-result-actions { display:flex; flex-wrap:wrap; align-items:center; gap:4px 12px; margin-top:5px; }
+.popup .pp-result-actions button { min-height:32px; padding:5px 0; }
+.popup a:hover { text-decoration:underline; }

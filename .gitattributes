@@ -1,0 +1,6 @@
+# Rivinvaihdot yhtenäisiksi (LF) Windowsissa ja Macissa
+* text=auto eol=lf
+
+*.png binary
+*.woff2 binary
+*.zip binary

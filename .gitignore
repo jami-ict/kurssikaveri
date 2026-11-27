@@ -1,0 +1,10 @@
+# Käyttöjärjestelmän ja työkalujen omat tiedostot
+.DS_Store
+Thumbs.db
+desktop.ini
+__pycache__/
+*.pyc
+.vscode/
+
+# Jaettavat paketit
+*.zip

@@ -1,0 +1,130 @@
+/* content.css – Kurssikaverin palkki ja merkit Moodlen kurssisivuilla.
+   Kaikki luokat alkavat "studyhub-", jotta ne eivät sekoitu Moodlen omiin tyyleihin.
+   Värit ovat samat kuin Kurssikaverin vaaleassa teemassa (style.css, paletti P1B); Moodle-sivu on aina vaalea.
+   Jos käyttäjä on valinnut toisen värimaailman, content.js asettaa sivulle muuttujat --kk-… (shared/skins.js: moodleVars).
+   Muuten käytetään alla olevia oletusarvoja: var(--kk-accent, #28513f) = "--kk-accent, tai jos sitä ei ole, #28513f". */
+
+.studyhub-bar, .studyhub-marks, .studyhub-control {
+  --sh-accent: var(--kk-accent, #28513f);
+  --sh-on-accent: var(--kk-on-accent, #fff);
+  --sh-text: var(--kk-text, #1f2420);
+  --sh-muted: var(--kk-muted, #5c625d);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Kurssin värit (samat kuin --k1 … --k7 style.css:ssä): tausta, piste, teksti */
+.studyhub-k1 { --c: var(--kk-k1-bg, #d6e1ec); --sh-dot: var(--kk-k1-dot, #4477aa); --sh-ink: var(--kk-k1-ink, #142433); }
+.studyhub-k2 { --c: var(--kk-k2-bg, #fbdde1); --sh-dot: var(--kk-k2-dot, #ee6677); --sh-ink: var(--kk-k2-ink, #471f24); }
+.studyhub-k3 { --c: var(--kk-k3-bg, #cee5d2); --sh-dot: var(--kk-k3-dot, #228833); --sh-ink: var(--kk-k3-ink, #0a290f); }
+.studyhub-k4 { --c: var(--kk-k4-bg, #f4f0d6); --sh-dot: var(--kk-k4-dot, #ccbb44); --sh-ink: var(--kk-k4-ink, #3d3814); }
+.studyhub-k5 { --c: var(--kk-k5-bg, #ddf4fb); --sh-dot: var(--kk-k5-dot, #66ccee); --sh-ink: var(--kk-k5-ink, #1f3d47); }
+.studyhub-k6 { --c: var(--kk-k6-bg, #ecd2e1); --sh-dot: var(--kk-k6-dot, #aa3377); --sh-ink: var(--kk-k6-ink, #330f24); }
+.studyhub-k7 { --c: var(--kk-k7-bg, #f0f0f0); --sh-dot: var(--kk-k7-dot, #bbbbbb); --sh-ink: var(--kk-k7-ink, #383838); }
+.studyhub-neutral { --c: var(--kk-bg, #f6f3ec); --sh-dot: var(--kk-faint, #a39c92); --sh-ink: var(--kk-text, #1f2420); }
+
+/* Moodle-palkki: Asetusten ja kurssisivun avoin kansio (päätös 25). */
+.studyhub-bar { --sh-face: var(--kk-accent-soft, #dcece4); --sh-tab: var(--kk-topbar, #28513f);
+  --sh-tab-ink: var(--kk-topbar-ink, #dce8e0); --sh-face-ink: var(--kk-accent-ink, #1e3a2d);
+  --sh-border: var(--kk-fold-border, color-mix(in srgb, #5c625d 70%, #e5dfd4));
+  position: relative; padding-top: 28px; margin: 0 0 18px; color: var(--sh-text); font-size: 14px; line-height: 1.5; }
+.studyhub-bar, .studyhub-bar *, .studyhub-bar *::before, .studyhub-bar *::after { box-sizing: border-box; }
+.studyhub-back { position: absolute; left: 0; right: 0; top: 23px; bottom: 0; border-radius: 6px 18px 18px 18px;
+  background: linear-gradient(to right, var(--sh-tab) 155px, color-mix(in srgb, var(--sh-tab) 50%, white)); }
+.studyhub-tab { position: absolute; top: 0; left: 0; height: 29px; max-width: calc(100% - 12px); padding: 0 15px 0 12px;
+  display: flex; align-items: center; gap: 7px; border: 1px solid var(--sh-border); border-bottom: 0;
+  font-size: 14px; font-weight: 700; color: var(--sh-tab-ink); background: var(--sh-tab); border-radius: 10px 11px 0 0; }
+.studyhub-tab::after { content: ""; position: absolute; left: 100%; bottom: 0; width: 11px; height: 11px; background: inherit;
+  -webkit-mask: radial-gradient(circle at 100% 0, transparent 10.5px, #000 11px); mask: radial-gradient(circle at 100% 0, transparent 10.5px, #000 11px); }
+.studyhub-logo { width: 18px; height: 18px; flex: none; }
+.studyhub-front { position: relative; padding: 16px 18px; border: 1px solid var(--sh-border);
+  border-radius: 14px 18px 18px 18px; background: var(--sh-face); }
+.studyhub-heading-row, .studyhub-state-row, .studyhub-state-group, .studyhub-action-row, .studyhub-save-actions {
+  display: flex; align-items: center; flex-wrap: wrap; min-width: 0; }
+.studyhub-heading-row { justify-content: space-between; gap: 12px 18px; }
+.studyhub-state-row { justify-content: space-between; gap: 12px 18px; margin-top: 12px; }
+.studyhub-state-group { gap: 10px 16px; }
+.studyhub-action-row { justify-content: space-between; gap: 12px 20px; margin-top: 14px; padding-top: 14px;
+  border-top: 1px solid color-mix(in srgb, var(--sh-muted) 30%, var(--sh-face)); }
+.studyhub-save-actions { gap: 8px; }
+.studyhub-course { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 14px; min-width: 0; font-weight: 700; font-size: 17px; }
+.studyhub-title { min-width: 0; overflow-wrap: anywhere; }
+/* Piste pysyy pitkänkin kurssinimen ensimmäisellä rivillä */
+.studyhub-title .studyhub-dot { display: inline-block; margin-right: 8px; vertical-align: 0; }
+.studyhub-dot { width: 11px; height: 11px; border-radius: 50%; flex: none; background: var(--sh-dot); box-shadow: inset 0 0 0 1px var(--sh-ink); }
+.studyhub-prog { display: flex; align-items: center; gap: 8px; min-width: 0; font-size: 14px; }
+.studyhub-pbar { display: block; width: 84px; height: 6px; flex: none; border-radius: 999px;
+  background: color-mix(in srgb, var(--sh-accent) 13%, white); overflow: hidden; }
+.studyhub-pbar i { display: block; height: 100%; border-radius: 999px; background: var(--sh-accent); }
+.studyhub-tag { display: inline-flex; align-items: center; gap: 5px; min-height: 26px; padding: 3px 9px; border-radius: 999px;
+  background: var(--kk-surface, #fffdf8); border: 1px solid var(--kk-line, #dad3c7); font-size: 12px; font-weight: 600; }
+.studyhub-tag-new { color: var(--sh-face-ink); background: var(--sh-face); }
+.studyhub-tag-updated { color: var(--kk-warn, #9a3d0a); background: var(--kk-warn-soft, #fbe6d6);
+  border-color: color-mix(in srgb, var(--kk-warn, #9a3d0a) 35%, var(--kk-line, #dad3c7)); }
+.studyhub-tag .studyhub-icon { width: 13px; height: 13px; }
+.studyhub-upd { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; min-width: 0; font-size: 14px; color: var(--sh-face-ink); }
+.studyhub-upd > span { overflow-wrap: anywhere; }
+.studyhub-upd-error { font-weight: 700; }
+/* Avaa Kurssikaverissa: näkyvä linkki kurssin nimen vieressä (painike, koska avaus kulkee taustaskriptin kautta) */
+.studyhub-open { position: relative; z-index: 3; border: 0; padding: 2px 0; background: none; color: var(--sh-accent); cursor: pointer;
+  font: 600 13.5px/1.2 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; text-decoration: underline; text-underline-offset: 3px; }
+.studyhub-open:hover { text-decoration-thickness: 2px; }
+.studyhub-open:focus-visible { outline: 2px solid var(--sh-accent); outline-offset: 2px; border-radius: 4px; }
+.studyhub-msg { display: block; margin-top: 12px; font-size: 14px; font-weight: 600; overflow-wrap: anywhere; }
+/* Tallentamatta jääneet tiedostot (kurssin kaikkien tiedostojen tallennuksen jälkeen) */
+.studyhub-fails { margin-top: 12px; font-size: 14px; overflow-wrap: anywhere; }
+.studyhub-fails ul { margin: 4px 0 0; padding-left: 18px; }
+.studyhub-fails li { margin: 2px 0; }
+.studyhub-link { color: inherit; font-weight: 700; text-decoration: underline; }
+.studyhub-link:focus-visible { outline: 2px solid var(--sh-accent); outline-offset: 2px; }
+
+/* Painikkeet */
+.studyhub-btn {
+  position: relative;
+  z-index: 3; /* Moodlen "stretched-link" peittää muuten painikkeen */
+  display: inline-flex; align-items: center; gap: 7px; min-height: 38px; padding: 0 14px;
+  border-radius: 10px; border: 1px solid rgba(31, 36, 32, .18); background: #fff; color: var(--sh-text);
+  font: 600 13.5px/1.2 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; cursor: pointer; white-space: nowrap;
+}
+.studyhub-btn:hover { border-color: var(--sh-accent); color: var(--sh-accent); }
+.studyhub-btn:focus-visible { outline: 2px solid var(--sh-accent); outline-offset: 2px; }
+.studyhub-btn:disabled { opacity: .6; cursor: default; }
+.studyhub-primary { background: var(--sh-accent); border-color: var(--sh-accent); color: var(--sh-on-accent); }
+.studyhub-primary:hover { background: var(--sh-text); border-color: var(--sh-text); color: #fff; }
+.studyhub-small { min-height: 32px; padding: 0 11px; font-size: 13px; }
+.studyhub-bar .studyhub-btn { min-height: 40px; max-width: 100%; padding: 8px 12px; border-radius: 12px;
+  white-space: normal; text-align: left; overflow-wrap: anywhere; }
+.studyhub-bar .studyhub-btn:not(.studyhub-primary) { background: var(--kk-surface, #fffdf8); border-color: var(--kk-line, #dad3c7); }
+.studyhub-bar .studyhub-upd .studyhub-btn { min-height: 36px; padding: 6px 11px; font-size: 13px; }
+.studyhub-bar .studyhub-saved, .studyhub-bar .studyhub-wait { font-size: 14px; }
+.studyhub-bar .studyhub-wait { color: var(--sh-text); }
+@media (max-width: 850px) {
+  .studyhub-state-row, .studyhub-action-row, .studyhub-state-group { align-items: flex-start; }
+  .studyhub-upd { width: 100%; }
+}
+@media (max-width: 550px) {
+  .studyhub-front { padding: 14px 12px; }
+  .studyhub-course { font-size: 16px; }
+  .studyhub-prog { flex-wrap: wrap; }
+}
+
+/* Kohteen vieressä: tallennuspainike tai tila */
+.studyhub-control { position: relative; z-index: 3; display: inline-flex; align-items: center; margin-left: 8px; align-self: center; }
+.studyhub-saved { display: inline-flex; align-items: center; gap: 5px; font-size: 13px; font-weight: 600; color: var(--sh-accent); }
+.studyhub-wait { display: inline-flex; align-items: center; gap: 5px; font-size: 13px; font-weight: 500; color: var(--sh-muted); }
+.studyhub-note { color: var(--sh-muted); font-size: 13px; }
+
+/* Uusi-merkki ja määräaika kohteen vieressä */
+.studyhub-marks { display: inline-flex; gap: 6px; flex-wrap: wrap; margin: 0 8px 0 0; position: relative; z-index: 3; }
+.studyhub-new { display: inline-flex; align-items: center; min-height: 22px; padding: 0 8px; border-radius: 999px; background: var(--kk-new-bg, #dcece4); color: var(--kk-new-ink, #1e3a2d);
+  font: 700 12px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.studyhub-deadline { display: inline-flex; align-items: center; gap: 5px; min-height: 24px; padding: 0 9px; border-radius: 999px;
+  background: var(--kk-bg, #f6f3ec); box-shadow: inset 0 0 0 1px var(--kk-line, #e1d9ce); color: var(--sh-text);
+  font: 600 12.5px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+/* Tänään = huomioväri (sama kuin --warn style.css:ssä), myöhässä = punainen reunus. */
+.studyhub-deadline.studyhub-soon { background: var(--kk-warn, #9a3d0a); box-shadow: none; color: var(--kk-on-warn, #fff); }
+.studyhub-deadline.studyhub-done { background: var(--kk-new-bg, #dcece4); box-shadow: none; color: var(--kk-new-ink, #1e3a2d); }
+.studyhub-deadline.studyhub-late { background: #fff; box-shadow: inset 0 0 0 1.5px #9a2b1e; color: #9a2b1e; }
+
+/* Ikonit (samat kuin shared/icons.js) */
+.studyhub-icon { width: 16px; height: 16px; flex: none; fill: none; stroke: currentColor;
+  stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
